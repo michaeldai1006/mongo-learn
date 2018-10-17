@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-// MongoDB Connection
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mongo-learn', { useNewUrlParser: true })
-  .catch((err) => { console.log(err); });
+const mongoose = require('../services/mongo.conn');
 
 // User model
 const Schema = mongoose.Schema;
