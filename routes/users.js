@@ -1,16 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const mongoose = require('../services/mongo.conn');
-
-// User model
-const Schema = mongoose.Schema;
-const userSchema = new Schema({
-  username: { type: String, required: true },
-  sex: { type: String, required: false },
-  email: { type: String, required: false },
-  phone_number: { type: String, required: false }
-});
-const User = mongoose.model('User', userSchema);
+const User = require('../models/User');
 
 // Create a new user
 router.post('/', async (req, res, next) => {

@@ -1,15 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const mongoose = require('../services/mongo.conn');
-
-// Order model
-const Schema = mongoose.Schema;
-const orderSchema = new Schema({
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    amount: { type: Number, required: true },
-    item_name: { type: String, required: true },
-});
-const Order = mongoose.model('Order', orderSchema);
+const Order = require('../models/Order');
 
 // Create a new order
 router.post('/', async (req, res, next) => {
