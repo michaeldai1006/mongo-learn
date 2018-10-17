@@ -35,7 +35,7 @@ router.put('/', async (req, res, next) => {
 
         doc.user_id = req.body.user_id;
         doc.amount = req.body.amount;
-        doc.item_name = req.item_name.email;
+        doc.item_name = req.body.item_name;
 
         const prods = await doc.save();
         res.json(prods);
