@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Order = require('../models/Order');
+const User = require('../models/User');
 
 // Create a new order
 router.post('/', async (req, res, next) => {
@@ -50,6 +51,22 @@ router.get('/', async (req, res, next) => {
             status: true,
             message: "All orders list",
             payload: { order_list: doc }
+        });
+    } catch (err) {
+        next(err);
+    }
+});
+
+// Find who placed the order
+router.get('/user/:order_id', async (req, res, next) => {
+    try {
+        const order = await Order.findById(req.params.order_id);
+        const user = await User.findById(order.user_id);
+
+        res.json({
+            status: true,
+            message: "User found",
+            payload: { user: user }
         });
     } catch (err) {
         next(err);
