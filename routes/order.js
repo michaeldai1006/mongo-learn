@@ -73,4 +73,19 @@ router.get('/user/:order_id', async (req, res, next) => {
     }
 });
 
+// Join
+router.get('/join/:order_id', async (req, res, next) => {
+    try {
+        const order = await Order.findById(req.params.order_id).populate('user_id');
+
+        res.json({
+            status: true,
+            message: "Order found",
+            payload: { order: order }
+        });
+    } catch (err) {
+        next(err);
+    }
+});
+
 module.exports = router;
