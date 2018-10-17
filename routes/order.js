@@ -39,7 +39,7 @@ router.put('/', async (req, res, next) => {
 // Delete order
 router.delete('/', async (req, res, next) => {
     const id = req.body.id;
-    const prods = await Order.findByIdAndRemove(id).exec();
+    const prods = await Order.findByIdAndRemove(id);
     res.json(prods);
 });
 

@@ -39,7 +39,7 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   const id = req.body.id;
-  const prods = await User.findByIdAndRemove(id).exec();
+  const prods = await User.findByIdAndRemove(id);
   res.json(prods);
 });
 
