@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('../services/mongo.conn');
 
-// User model
+// Order model
 const Schema = mongoose.Schema;
 const orderSchema = new Schema({
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -57,7 +57,7 @@ router.get('/', async (req, res, next) => {
         const doc = await Order.find();
         res.json({
             status: true,
-            message: "All users list",
+            message: "All orders list",
             payload: { order_list: doc }
         });
     } catch (err) {
